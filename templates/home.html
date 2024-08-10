@@ -1,1 +1,22 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Home</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Membership Site</h1>
+        {% if 'user' in session %}
+            <p>Hello, {{ session['user'] }}!</p>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+            <p>You are not logged in.</p>
+            <a href="{{ url_for('login') }}">Login</a> or
+            <a href="{{ url_for('register') }}">Register</a>
+        {% endif %}
+    </div>
+</body>
+</html>
